@@ -1,10 +1,24 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import React, { useState } from "react";
+import { createNote } from "../api/notes";
 
 const AddNote = ({ show, onClose, onSave }) => {
   const [title, setTitle] = useState("");
   const [topics, setTopics] = useState([]);
   const [body, setBody] = useState("");
-
+  const queryClient = useQueryClient();
+  const { mutate: addNote } = useMutation({
+    mutationFn: () =>
+      createNote({
+        title,
+        topic: topics,
+        body,
+      }),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["notes"]);
+      onClose();
+    },
+  });
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
   };
@@ -31,7 +45,7 @@ const AddNote = ({ show, onClose, onSave }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    onSave({ title, topics, body });
+    addNote();
     setTitle("");
     setTopics([]);
     setBody("");

@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Notes from "./pages/Notes";
 import Note from "./pages/Note";
+import Users from "./pages/Users";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/notes/:noteId" element={<Note />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/users" element={<Users />} />
       </Routes>
     </div>
   );

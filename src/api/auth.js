@@ -18,4 +18,22 @@ const register = async (userInfo) => {
   }
 };
 
-export { login, register };
+const me = async () => {
+  try {
+    const { data } = await instance.get("/auth/me");
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getAllUsers = async () => {
+  try {
+    const { data } = await instance.get("/auth/users");
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { login, register, me, getAllUsers };

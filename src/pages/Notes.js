@@ -17,11 +17,8 @@ const Notes = () => {
   const [show, setShow] = useState(false);
   const onClose = () => setShow(false);
   const onOpen = () => setShow(true);
-  const a = [];
-  for (let i = 0; i < 20; i++) {
-    if (notes) a.push(notes[0]);
-  }
-  const noteList = a?.map((note) => <NoteItem key={note._id} {...note} />);
+
+  const noteList = notes?.map((note) => <NoteItem key={note._id} {...note} />);
   return (
     <div className="p-5 min-h-screen bg-gray-900">
       {/* Add note button */}

@@ -1,48 +1,28 @@
 import instance from ".";
 
 const getAllNotes = async () => {
-  try {
-    const { data } = await instance.get("/notes");
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
+  const { data } = await instance.get("/notes");
+  return data;
 };
 
 const getNote = async (noteId) => {
-  try {
-    const { data } = await instance.get(`/notes/${noteId}`);
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
+  const { data } = await instance.get(`/notes/${noteId}`);
+  return data;
 };
 
 const createNote = async (noteInfo) => {
-  try {
-    const { data } = await instance.post("/notes", noteInfo);
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
+  const { data } = await instance.post("/notes", noteInfo);
+  return data;
 };
 
 const updateNote = async (noteInfo) => {
-  try {
-    const { data } = await instance.put(`/notes/${noteInfo._id}`, noteInfo);
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
+  const { data } = await instance.put(`/notes/${noteInfo._id}`, noteInfo);
+  return data;
 };
 
 const deleteNote = async (noteId) => {
-  try {
-    const { data } = await instance.delete(`/notes/${noteId}`);
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
+  const { data } = await instance.delete(`/notes/${noteId}`);
+  return data;
 };
 
 export { getAllNotes, createNote, updateNote, deleteNote, getNote };

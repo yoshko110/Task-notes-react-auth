@@ -6,6 +6,7 @@ const Login = () => {
   const handleChange = (e) => {
     setUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
     // Add login logic here

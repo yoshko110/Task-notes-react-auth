@@ -7,18 +7,19 @@ import Register from "./pages/Register";
 import Notes from "./pages/Notes";
 import Note from "./pages/Note";
 import Users from "./pages/Users";
+import { clear } from "@testing-library/user-event/dist/clear";
 
 function App() {
   return (
     <div className="App font-mono ">
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/notes" element={<Notes />} />
-        <Route path="/notes/:noteId" element={<Note />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/users" element={<Users />} />
+        <Route path="/" Component={Home} />
+        <Route path="/notes" Component={Notes} />
+        <Route path="/notes/:noteId" Component={Note} />
+        <Route path="/login" Component={Login} />
+        <Route path="/register" Component={Register} />
+        <Route path="/users" Component={Users} />
       </Routes>
     </div>
   );

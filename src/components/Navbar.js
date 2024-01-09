@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import userContext from "../context/userContext";
 import { deletToken } from "../api/storege";
 const Navbar = () => {
   const [user, setUser] = useContext(userContext);
-
+  const navigate = useNavigate();
   return (
     <nav className="bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -38,9 +38,11 @@ const Navbar = () => {
               </NavLink>
               {user == true ? (
                 <button
+                  className="text-white"
                   onClick={() => {
                     deletToken();
                     setUser(false);
+                    navigate("/login");
                   }}
                 >
                   logout

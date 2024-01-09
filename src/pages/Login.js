@@ -2,14 +2,19 @@ import { useMutation } from "@tanstack/react-query";
 import React, { useContext, useState } from "react";
 import { login } from "../api/auth";
 import userContext from "../context/userContext";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [userInfo, setUserInfo] = useState({});
   const [user, setUser] = useContext(userContext);
-  const { mutate } = useMutation({
+  const navigate = useNavigate();
+  const { mutate, error } = useMutation({
     mutationKey: ["login"],
     mutationFn: () => login(userInfo),
-    onSuccess: () => setUser(true),
+    onSuccess: () => {
+      setUser(true);
+      navigate("/");
+    },
   });
 
   const handleChange = (e) => {
@@ -62,6 +67,7 @@ const Login = () => {
               required
             />
           </div>
+          <div className="text-red-700">{error?.massage}</div>
           <div className="flex justify-center">
             <button
               type="submit"
